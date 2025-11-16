@@ -1,0 +1,7 @@
+.navbar-gradient {
+  background: linear-gradient(90deg, #0d6efd, #6610f2); /* blue to purple */
+}
+
+.nav-link:hover {
+  color: #ffc107 !important; /* yellow hover */
+}

@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Django
+db.sqlite3
+
+# Virtual environment
+myenv/
+
+# Node modules
+front/trainers_frontend/node_modules/
+
+# Vite build
+front/trainers_frontend/dist/
