@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
+import dj_database_url # <--- New import
+
 import pymysql
 
 pymysql.install_as_MySQLdb()
@@ -24,7 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--$z2w_wpmai)c**h$5+^lb1t))o7&p1v+@u4b*xf+tg5myw7hj'
+# settings.py (NEW CODE - USE THIS)
+SECRET_KEY = os.environ.get('SECRET_KEY', 'default-key-for-local-only')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -82,14 +86,11 @@ WSGI_APPLICATION = 'trainer_search_app.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'idk_8val',
-        'USER': 'idk_8val_user',
-        'PASSWORD': 'xohbSkVTaTIC3ibUk6CfUsowobFx3yp8',
-        'HOST': 'dpg-d4cnso4hg0os73bg6ki0-a',
-        'PORT': '5432'
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 
