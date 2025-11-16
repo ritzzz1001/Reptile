@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://127.0.0.1:8000/api/";
+// Take backend URL from .env file
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 // ================= LOGIN ====================
 export const LoginApi = async (username, password) => {
@@ -8,7 +9,7 @@ export const LoginApi = async (username, password) => {
     username,
     password,
   });
-  return response.data; // returns { access, refresh }
+  return response.data; 
 };
 
 // ================= TOKEN HANDLER =============
@@ -31,7 +32,7 @@ export const addTrainer = async (trainer) => {
 // ================= SEARCH TRAINER ============
 export const searchTrainer = async (filter = {}) => {
   const params = new URLSearchParams(filter).toString();
-  const response = await axios.get(`${BASE_URL}trainer?${params}`, {
+  const response = await axios.get(`${BASE_URL}trainer/?${params}`, {
     headers: AuthToken(),
   });
   return response.data;
