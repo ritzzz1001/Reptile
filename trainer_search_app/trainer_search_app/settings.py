@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--$z2w_wpmai)c**h$5+^lb1t))o7&p1v+@u4b*xf+tg5myw7hj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,12 +83,12 @@ WSGI_APPLICATION = 'trainer_search_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'trainer_data',
-        'USER': 'root',
-        'PASSWORD': 'Asdf**1300',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'idk_8val',
+        'USER': 'idk_8val_user',
+        'PASSWORD': 'xohbSkVTaTIC3ibUk6CfUsowobFx3yp8',
+        'HOST': 'dpg-d4cnso4hg0os73bg6ki0-a',
+        'PORT': '5432'
     }
 }
 
@@ -127,7 +127,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles' 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
